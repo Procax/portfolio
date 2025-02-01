@@ -1,0 +1,24 @@
+img {
+    width: 100%; /* Match the card's width */
+    height: auto; /* Adjust height while maintaining aspect ratio */
+    object-fit: cover; /* Ensures the image covers the container */
+    flex-shrink: 0;
+}
+
+.Card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    width: 575px;
+
+}
+
+.heading {
+ text-align: center;
+}
+
+h4 {
+    padding: 15px;
+}

@@ -1,0 +1,5 @@
+.Cards {
+    display: flex;
+    column-gap: 65px;
+    justify-content: center;
+}

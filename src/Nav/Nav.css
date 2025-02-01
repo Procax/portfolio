@@ -1,0 +1,43 @@
+.Nav-bar {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.Nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+}
+
+p {
+    font-size: 30px;
+}
+
+.Git-icon {
+    position: absolute;
+    right: 5px; /* Position it 20px from the right edge */
+    padding-top: 20px;
+    padding-right: 55px;
+    
+ 
+}
+
+.Head-name {
+    position: absolute;
+    left: 5px; /* Position it 20px from the right edge */
+    padding-left: 55px;
+    padding-top: 29px;
+font-family: Inter;
+font-size: 32px;
+font-weight: 700;
+line-height: 38.73px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+
+}
+
+

@@ -1,0 +1,28 @@
+.Footer {
+    display: flex;
+    padding-left: 75px;
+}
+.Footer-Name {
+    width: 243px;
+height: 67px;
+opacity: 0px;
+font-family: Inter;
+font-size: 32px;
+font-weight: 700;
+line-height: 38.73px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+padding-top: 10px;
+
+}
+
+.Git-icon-footer {
+    position: absolute;
+    right: 5px; /* Position it 20px from the right edge */
+    padding-right: 55px;
+    display: flex;
+    gap: 25px;
+
+
+}

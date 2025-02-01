@@ -1,0 +1,75 @@
+img {
+    height: 734px;
+    width: 600px;
+    border-radius: 20px;
+    display: flex;
+    align-content: flex-start;
+}
+
+h2 {
+    font-size: medium;
+    font-size: 50px;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 95px;
+}
+
+.Profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 130px;
+    justify-content: space-around;
+}
+
+.contact {
+    text-decoration: underline;
+}
+
+.underline-only {
+    display: inline-block;
+    border-bottom: 2px solid #A6BBCC; /* Thickness and color of the underline */
+    width: 1200px; /* Length of the underline */
+    border-radius: 25px;
+  }
+  
+  .About {
+    display: flex;
+    align-items: center;
+    gap: 75px;
+    justify-content: center;
+  }
+
+  .About-desc {
+    display: flex;
+    align-content: center;
+    /* padding-left: 230px;
+    padding-right: 230px; */
+  }
+
+  .MySkills {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Logo {
+    display: flex;
+    flex-direction: column;
+    row-gap: 55px;
+    align-items: center;
+  }
+
+.Logo-1 {
+    display: flex;
+    column-gap: 105px;
+}
+
+.Logo-2 {
+    display: flex;
+    column-gap: 105px;
+
+}
