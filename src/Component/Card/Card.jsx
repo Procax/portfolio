@@ -1,6 +1,5 @@
 import React from 'react'
 import '../Card/Card.css'
-import Rectangle from 'C:/Users/PC/Desktop/React/portfolio/src/Assets/Rectangle.jpg';
 
 const Card = ({imageUrl, title, description, stack }) => {
   return (
