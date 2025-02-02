@@ -22,10 +22,10 @@ const Section = () => {
           
           <div>
 
-            <Card imageUrl={project1} title='Youtube-Clone' stack='React, Redux, Tailwind CSS, Javascript '/>
+            <Card link={`https://github.com/Procax/Yotube-clone`} imageUrl={project1} title='Youtube-Clone' stack='React, Redux, Tailwind CSS, Javascript '/>
         </div>
         <div>
-          <Card imageUrl={project2} title='Pokedex-App' stack='React, CSS, Javascript'/>
+          <Card link={`https://github.com/Procax/pokemon`} imageUrl={project2} title='Pokedex-App' stack='React, CSS, Javascript'/>
         </div>
         {/* <div>
           <Card/>

@@ -15,6 +15,11 @@ p {
     font-size: 30px;
 }
 
+a {
+    text-decoration: none;
+    color: #A6BBCC;
+}
+
 .Git-icon {
     position: absolute;
     right: 5px; /* Position it 20px from the right edge */

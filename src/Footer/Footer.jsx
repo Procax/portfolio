@@ -16,8 +16,9 @@ const Footer = () => {
               <div className='Git-icon-footer'>
               <FaFacebook size='65px' />
               <FaInstagram size='68px' />
-              <FaGithub size='65px'/>
-              </div>
+              <a href="https://github.com/Procax" target="_blank" rel="noopener noreferrer">
+    <FaGithub size='65px' />
+  </a>              </div>
       
     </div>
   )

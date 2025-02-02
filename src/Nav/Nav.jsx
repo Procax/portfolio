@@ -13,11 +13,15 @@ const Nav = () => {
         <div><p>Home</p></div>
         <div><p>About</p></div>
         <div><p>Work</p></div>
-        <div><p>Resume</p></div>
+        <div><p>
+<a href="/Karansingh-Hajari-Resume.pdf" download="Karansingh-Hajari-Resume.pdf">Resume</a>
+        </p></div>
 
         <div className='Git-icon'>
-        <FaGithub size='65px'/>
-        </div>
+  <a href="https://github.com/Procax" target="_blank" rel="noopener noreferrer">
+    <FaGithub size='65px' />
+  </a>
+</div>
         </div>
 
 
