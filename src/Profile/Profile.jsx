@@ -30,7 +30,7 @@ const Profile = () => {
             <h2 className='contact'>Contact me</h2>
         </div>
         <div className='image'>
-           <img src={profileImage} alt="profile-image" /> 
+           <img className='profile-img' src={profileImage} alt="profile-image" /> 
         </div>
 
         </div>

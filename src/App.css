@@ -6,4 +6,9 @@
 .flex {
   padding: 75px;
 
+  @media screen and (min-width: 320px) and (max-width: 1040px) {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
 }

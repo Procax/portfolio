@@ -1,10 +1,8 @@
 img {
-    height: 734px;
-    width: 600px;
+    height: 800px;
+    width: 800px;
     border-radius: 20px;
-    display: flex;
-    align-content: flex-start;
-}
+  }
 
 h2 {
     font-size: medium;
@@ -14,6 +12,10 @@ h2 {
 h1 {
     font-weight: 900;
     font-size: 95px;
+@media screen and (min-width: 320px) and (max-width: 1040px) {
+  font-size: 72px;
+}
+
 }
 
 .Profile {
@@ -22,6 +24,21 @@ h1 {
     justify-content: center;
     gap: 130px;
     justify-content: space-around;
+
+@media screen and (min-width: 320px) and (max-width: 1040px) {
+  flex-direction: column;
+  text-align: center;
+      
+    }
+}
+
+.profile-img {
+  @media screen and (min-width: 320px) and (max-width: 1040px) {
+    height: fit-content;
+    /* width: fit-content; */
+      width: -webkit-fill-available;
+
+}
 }
 
 .contact {
@@ -33,6 +50,10 @@ h1 {
     border-bottom: 2px solid #A6BBCC; /* Thickness and color of the underline */
     width: 1200px; /* Length of the underline */
     border-radius: 25px;
+
+      @media screen and (min-width: 320px) and (max-width: 1040px) {
+        display: none;      
+    }
   }
   
   .About {
@@ -40,6 +61,12 @@ h1 {
     align-items: center;
     gap: 75px;
     justify-content: center;
+
+  @media screen and (min-width: 320px) and (max-width: 1040px) {
+    flex-direction: column;
+      
+    }
+
   }
 
   .About-desc {
@@ -54,6 +81,10 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+      @media screen and (min-width: 320px) and (max-width: 1040px) {
+        text-align: center;      
+    }
+
   }
 
   .Logo {
@@ -66,10 +97,23 @@ h1 {
 .Logo-1 {
     display: flex;
     column-gap: 105px;
+
+  @media screen and (min-width: 320px) and (max-width: 1040px) {
+    flex-direction: column;
+    gap: 50px
+      
+    }
 }
 
 .Logo-2 {
     display: flex;
     column-gap: 105px;
+
+      @media screen and (min-width: 320px) and (max-width: 1040px) {
+    flex-direction: column;
+        gap: 50px
+
+      
+    }
 
 }
