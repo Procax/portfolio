@@ -53,12 +53,14 @@ const Contact = () => {
     </div>
     
   </div>
-  <div className='Form'>
-    <div className='paragraph'>
+
+      <div className='paragraph'>
       <p>
     I would love to hear about your project and how I can help. Please fill in the form, and I’ll get back to you as soon as possible.
       </p>
     </div>
+  <div className='Form'>
+
     <form onSubmit={handlesubmit}><div className='Name' >
   <input type="text" name="" id="" placeholder='Name' value={formData.name}/>
 </div>

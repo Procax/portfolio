@@ -1,8 +1,12 @@
 .underline-only {
-    display: inline-block;
+    display: block;
     border-bottom: 2px solid #A6BBCC; /* Thickness and color of the underline */
     width: 800px; /* Length of the underline */
     border-radius: 25px;
+
+       @media screen and (min-width: 320px) and (max-width: 1040px) {
+        display: none;
+       }
   }
 
   .Contact-me {
@@ -10,20 +14,13 @@
     justify-content: center;
     align-items: center;
     gap: 75px;
-   @media screen and (min-width: 320px) and (max-width: 1040px) {
-    flex-direction: column;
-      
-    }
+    flex-direction: row;
+
     
   }
 
   .paragraph {
-    width: 848px;
-height: 124px;
-top: 2364px;
-left: 296px;
-gap: 0px;
-opacity: 0px;
+
 
 font-family: Space Grotesk;
 font-size: 24px;
@@ -33,6 +30,12 @@ text-align: left;
 text-underline-position: from-font;
 text-decoration-skip-ink: none;
 
+p {
+   @media screen and (min-width: 320px) and (max-width: 1040px) {
+    display: flex;
+    flex-direction: column;
+      
+    }}
 
   }
 
@@ -65,6 +68,13 @@ text-decoration-skip-ink: none;
     :focus{
         outline: 2px solid #0f62fe;
         outline-offset: -2px;
+    }
+
+       @media screen and (min-width: 320px) and (max-width: 1040px) {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+      
     }
 
 

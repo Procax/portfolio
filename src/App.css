@@ -12,3 +12,9 @@
     padding: 10px;
   }
 }
+
+.underline-only {
+    @media screen and (min-width: 320px) and (max-width: 1040px) {
+      display: none;
+    }
+}
