@@ -23,11 +23,11 @@ const Profile = () => {
 
 
         <div>
-            <h2>Hello, I'm Karansingh,</h2>
+            <h2>Hello, I&apos;m KaranSinghHajari</h2>
             <h1>Front-end <br />
                 <span>Developer</span>
             </h1>
-            <h2 className='contact'>Contact me</h2>
+            <h2 className='contact'>Available for your next build</h2>
         </div>
         <div className='image'>
            <img className='profile-img' src={profileImage} alt="profile-image" /> 
@@ -49,16 +49,15 @@ const Profile = () => {
         </div>
         <div className='About-desc'>
           <p>
-          Creative Front-End Developer specializing in crafting intuitive and dynamic user interfaces.
-          Skilled in modern frameworks such as React, with a solid foundation in HTML5, CSS3, and JavaScript ES6.
-          Demonstrated ability to translate design mockups into functional websites, ensuring optimal performance and accessibility.
-          Known for strong problem-solving abilities and a collaborative approach to project development.
-          Passionate about staying updated with the latest industry trends to deliver cutting-edge solutions.
+          I design and build refined digital experiences that blend strong visual design with dependable front-end performance.
+          With a solid foundation in HTML, CSS, JavaScript, and React, I turn ideas into responsive, accessible interfaces that feel fast, clear, and intuitive.
+          I enjoy translating product goals into thoughtful user experiences that are clean, scalable, and built to make an impact.
+          Constantly learning and refining my craft, I focus on creating work that is both visually polished and genuinely useful.
           </p>
         </div>
         <div className='MySkills'>
           <h1>
-           My Skills
+           Core Stack
           </h1>
           <div className='Logo'>
             <div className='Logo-1'>

@@ -56,22 +56,22 @@ const Contact = () => {
 
       <div className='paragraph'>
       <p>
-    I would love to hear about your project and how I can help. Please fill in the form, and I’ll get back to you as soon as possible.
+    I&apos;d love to hear about your project and how I can help. Share a few details below, and I&apos;ll get back to you shortly.
       </p>
     </div>
   <div className='Form'>
 
     <form onSubmit={handlesubmit}><div className='Name' >
-  <input type="text" name="" id="" placeholder='Name' value={formData.name}/>
+ <input type="text" name="name" id="name" placeholder='Name' value={formData.name} onChange={handleChange} />
 </div>
 <div className='Email'>
-<input type="text" name="" id="" placeholder='Email' value={formData.email}/>
+<input type="text" name="email" id="email" placeholder='Email' value={formData.email} onChange={handleChange} />
 </div>
 <div className='Message'>
-  <input type="text" placeholder='Message' value={formData.message}/>
+ <input type="text" name="message" id="message" placeholder='Message' value={formData.message} onChange={handleChange} />
 </div>
 <div className='btn'>
-<button className="button"> Send Message
+<button className="button" type="submit"> Send Message
 </button>
 </div>
 </form>
