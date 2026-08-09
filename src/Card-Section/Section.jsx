@@ -10,7 +10,7 @@ const Section = () => {
     <div className='Contact-me'>
     <div>
     <h1>
-      Work
+      Selected Work
     </h1>
     </div>
     <div>
