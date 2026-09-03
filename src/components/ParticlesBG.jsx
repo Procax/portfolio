@@ -1,65 +1,51 @@
 import React, { useCallback } from 'react';
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim"; // Using slim for performance
+import Particles, { ParticlesProvider } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const ParticlesBG = () => {
-  const particlesInit = useCallback(async engine => {
+  const init = useCallback(async (engine) => {
     await loadSlim(engine);
   }, []);
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={{
-          background: {
-            color: {
-              value: "transparent",
+      <ParticlesProvider init={init}>
+        <Particles
+          id="tsparticles"
+          options={{
+            background: {
+              color: { value: "transparent" },
             },
-          },
-          fpsLimit: 60,
-          particles: {
-            color: {
-              value: "#00f2fe", // cyber-cyan
-            },
-            links: {
-              color: "#38bdf8", // cyber-blue
-              distance: 150,
-              enable: true,
-              opacity: 0.2,
-              width: 1,
-            },
-            move: {
-              direction: "none",
-              enable: true,
-              outModes: {
-                default: "bounce",
-              },
-              random: true,
-              speed: 0.8,
-              straight: false,
-            },
-            number: {
-              density: {
+            fpsLimit: 60,
+            particles: {
+              color: { value: "#00f2fe" },
+              links: {
+                color: "#38bdf8",
+                distance: 150,
                 enable: true,
-                area: 800,
+                opacity: 0.2,
+                width: 1,
               },
-              value: 40,
+              move: {
+                direction: "none",
+                enable: true,
+                outModes: { default: "bounce" },
+                random: true,
+                speed: 0.8,
+                straight: false,
+              },
+              number: {
+                density: { enable: true, area: 800 },
+                value: 40,
+              },
+              opacity: { value: 0.3 },
+              shape: { type: "circle" },
+              size: { value: { min: 1, max: 3 } },
             },
-            opacity: {
-              value: 0.3,
-            },
-            shape: {
-              type: "circle",
-            },
-            size: {
-              value: { min: 1, max: 3 },
-            },
-          },
-          detectRetina: true,
-        }}
-      />
+            detectRetina: true,
+          }}
+        />
+      </ParticlesProvider>
     </div>
   );
 };
