@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Preloader = ({ onComplete }) => {
-  const [lines, setLines] = useState([]);
-  
-  const bootSequence = [
+const bootSequence = [
+
     "INITIALIZING KINETIC_SYS V.4.2...",
     "LOADING USER_PROFILE: KARANSINGH_HAJARI",
     "CONNECTING TO NEURAL_NET...",
     "MOUNTING CYBER_UI MODULES...",
     "ESTABLISHING COMMS_LINK...",
     "ALL SYSTEMS NOMINAL. READY."
-  ];
+];
+
+const Preloader = ({ onComplete }) => {
+  const [lines, setLines] = useState([]);
 
   useEffect(() => {
     let index = 0;
@@ -27,7 +28,7 @@ const Preloader = ({ onComplete }) => {
     }, 200); // fast typing effect
     
     return () => clearInterval(interval);
-  }, [bootSequence, onComplete]);
+  }, [onComplete]);
 
   return (
     <motion.div
