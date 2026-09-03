@@ -1,6 +1,6 @@
-﻿import React, { useRef } from 'react';
+import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Wireframe } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 
 const Core = () => {
   const meshRef = useRef();

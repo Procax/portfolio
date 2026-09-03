@@ -10,7 +10,7 @@ const CursorTrail = () => {
     let particles = [];
     
     const mouse = { x: -1000, y: -1000 };
-    let isMoving = false;
+    
     let timeout;
 
     const resize = () => {
@@ -24,9 +24,9 @@ const CursorTrail = () => {
     const handleMouseMove = (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
-      isMoving = true;
+      
       clearTimeout(timeout);
-      timeout = setTimeout(() => (isMoving = false), 100);
+      timeout = setTimeout(() => {}, 100);
       
       particles.push({
         x: mouse.x,

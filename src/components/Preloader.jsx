@@ -27,7 +27,7 @@ const Preloader = ({ onComplete }) => {
     }, 200); // fast typing effect
     
     return () => clearInterval(interval);
-  }, []);
+  }, [bootSequence, onComplete]);
 
   return (
     <motion.div

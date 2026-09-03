@@ -328,7 +328,7 @@ export default function App() {
 {/* Section Header with scroll reveal */}
 <div className="reveal-on-scroll flex flex-col items-center text-center gap-2 mb-10">
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
-<span>// 01. PROFILE_LOG</span>
+<span>{"// 01. PROFILE_LOG"}</span>
 </div>
 <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover" data-text="About">About</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>
@@ -366,7 +366,7 @@ export default function App() {
 {/* Section Header */}
 <div className="reveal-on-scroll flex flex-col items-center text-center gap-2 mb-12">
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
-<span>// 02. SYSTEM_TOOLKIT</span>
+<span>{"// 02. SYSTEM_TOOLKIT"}</span>
 </div>
 <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover" data-text="Core Stack">Core Stack</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>
@@ -459,7 +459,7 @@ export default function App() {
 {/* Section Header */}
 <div className="reveal-on-scroll flex flex-col items-center text-center gap-2 mb-12">
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
-<span>// 03. SHIPPED_BUILDS</span>
+<span>{"// 03. SHIPPED_BUILDS"}</span>
 </div>
 <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover" data-text="Selected Work">Selected Work</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>
@@ -544,7 +544,7 @@ export default function App() {
   <span>Live Showcase</span>
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">open_in_new</span>
 </a>
-<a className="text-on-surface-variant hover:text-white flex items-center gap-1 group/link" href="#">
+<a className="text-on-surface-variant hover:text-white flex items-center gap-1 group/link" href="#!">
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:rotate-12">code</span>
 <span>Source Code</span>
 </a>
@@ -632,7 +632,7 @@ export default function App() {
   <span>Launch Pokedex</span>
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">open_in_new</span>
 </a>
-<a className="text-on-surface-variant hover:text-white flex items-center gap-1 group/link" href="#">
+<a className="text-on-surface-variant hover:text-white flex items-center gap-1 group/link" href="#!">
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:rotate-12">code</span>
 <span>GitHub Repo</span>
 </a>
@@ -650,7 +650,7 @@ export default function App() {
 <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-cyber-blue/10 blur-[100px] pointer-events-none"></div>
 <div className="relative z-10 flex flex-col items-center text-center gap-3 mb-8">
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase">
-<span>// 04. TRANSMISSION_PORT</span>
+<span>{"// 04. TRANSMISSION_PORT"}</span>
 </div>
 <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover" data-text="Contact me">Contact me</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full"></div>
