@@ -123,8 +123,58 @@ export const SoundProvider = ({ children }) => {
     osc.stop(audioCtxRef.current.currentTime + 0.1);
   };
 
+
+  const playSectionReveal = () => {
+    if (isMuted || !audioCtxRef.current) return;
+    const ctx = audioCtxRef.current;
+    const now = ctx.currentTime;
+
+    // Noise burst for the "thud" body
+    const bufferSize = ctx.sampleRate * 0.12; // 120ms of noise
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = (Math.random() * 2 - 1);
+    }
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+
+    // Low-pass filter to shape noise into a deep thud
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(180, now);
+    filter.frequency.exponentialRampToValueAtTime(60, now + 0.12);
+
+    // Gain envelope: fast attack, fast decay
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.18, now + 0.008); // snap attack
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);  // fast decay
+
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+    noise.start(now);
+    noise.stop(now + 0.13);
+
+    // Optional: subtle high metallic "tick" overtone on top
+    const tick = ctx.createOscillator();
+    tick.type = 'sine';
+    tick.frequency.setValueAtTime(1800, now);
+    tick.frequency.exponentialRampToValueAtTime(400, now + 0.06);
+
+    const tickGain = ctx.createGain();
+    tickGain.gain.setValueAtTime(0.04, now);
+    tickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+    tick.connect(tickGain);
+    tickGain.connect(ctx.destination);
+    tick.start(now);
+    tick.stop(now + 0.07);
+  };
+
   return (
-    <SoundContext.Provider value={{ isMuted, setIsMuted, playClick, playHover }}>
+    <SoundContext.Provider value={{ isMuted, setIsMuted, playClick, playHover, playSectionReveal }}>
       {children}
     </SoundContext.Provider>
   );
@@ -139,7 +189,7 @@ export const SoundToggle = () => {
         setIsMuted(!isMuted);
         if (isMuted) playClick();
       }}
-      className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-surface-container-high border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan hover:border-cyber-cyan transition-all hover:scale-110 shadow-[0_0_15px_rgba(0,242,254,0.15)]"
+      className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 rounded-full bg-surface-container-high border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan hover:border-cyber-cyan transition-all hover:scale-110 shadow-[0_0_15px_rgba(0,242,254,0.15)]"
       title={isMuted ? "Unmute Audio" : "Mute Audio"}
     >
       <span className="material-symbols-outlined text-[20px]">

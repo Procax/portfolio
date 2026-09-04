@@ -11,6 +11,8 @@ import KineticMarquee from "./components/KineticMarquee";
 import CircuitScrollLine from "./components/CircuitScrollLine";
 import XRayCard from "./components/XRayCard";
 import CursorTrail from "./components/CursorTrail";
+import MobileNav from "./components/MobileNav";
+import SectionSoundTrigger from "./components/SectionSoundTrigger";
 
 export default function App() {
   const [booting, setBooting] = useState(true);
@@ -162,7 +164,9 @@ export default function App() {
 
   return (
     <SoundProvider>
+      <SectionSoundTrigger />
       <SoundToggle />
+      <MobileNav />
       <CursorTrail />
       <CircuitScrollLine />
       <div className="crt-overlay pointer-events-none fixed inset-0 z-50"></div>
@@ -214,7 +218,7 @@ export default function App() {
 </span>
 <span className="text-cyber-cyan tracking-wide font-medium">OPEN TO WORK</span>
 </div>
-<a className="p-2 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant hover:border-cyber-blue/50 text-on-surface transition-all flex items-center gap-1 text-xs font-mono hover:scale-105 active:scale-95" href="https://github.com" rel="noopener noreferrer" target="_blank" title="GitHub Profile">
+<a className="p-2 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant hover:border-cyber-blue/50 text-on-surface transition-all flex items-center gap-1 text-xs font-mono hover:scale-105 active:scale-95" href="https://github.com/Procax?tab=repositories" rel="noopener noreferrer" target="_blank" title="GitHub Profile">
 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
 <path clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fillRule="evenodd"></path>
 </svg>
@@ -266,11 +270,11 @@ export default function App() {
           </p>
 {/* CTAs with rich hover interactions */}
 <div className="animate-enter delay-500 flex flex-wrap items-center gap-4 pt-2">
-<MagneticElement><a className="btn-cyber-primary inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyber-blue to-cyber-cyan text-surface-dim font-mono text-sm font-bold glow-cyan hover:shadow-[0_0_32px_rgba(0,242,254,0.6)] hover:scale-[1.03] transition-all" href="#work">
+<MagneticElement><a className="btn-cyber-primary haptic-ripple inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyber-blue to-cyber-cyan text-surface-dim font-mono text-sm font-bold glow-cyan hover:shadow-[0_0_32px_rgba(0,242,254,0.6)] hover:scale-[1.03] transition-all" href="#work">
 <span>View Selected Work</span>
 <span className="material-symbols-outlined text-[18px] transition-transform duration-200 group-hover:translate-x-1">terminal</span>
 </a></MagneticElement>
-<MagneticElement><a className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant hover:border-cyber-cyan/50 text-white font-mono text-sm font-medium transition-all hover:scale-[1.02] active:scale-[0.98]" href="#contact">
+<MagneticElement><a className="haptic-ripple inline-flex items-center gap-2 px-6 py-3 rounded-full bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant hover:border-cyber-cyan/50 text-white font-mono text-sm font-medium transition-all hover:scale-[1.02] active:scale-[0.98]" href="#contact">
 <span className="material-symbols-outlined text-[18px] text-cyber-cyan">mail</span>
 <span>Contact Me</span>
 </a></MagneticElement>
@@ -551,7 +555,7 @@ export default function App() {
   <span>Live Showcase</span>
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">open_in_new</span>
 </a>
-<a className="text-on-surface-variant hover:text-white flex items-center gap-1 group/link" href="#!">
+<a className="text-on-surface-variant hover:text-white flex items-center gap-1 group/link" href="https://github.com/Procax/Yotube-clone" target="_blank" rel="noopener noreferrer">
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:rotate-12">code</span>
 <span>Source Code</span>
 </a>
@@ -639,7 +643,7 @@ export default function App() {
   <span>Launch Pokedex</span>
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">open_in_new</span>
 </a>
-<a className="text-on-surface-variant hover:text-white flex items-center gap-1 group/link" href="#!">
+<a className="text-on-surface-variant hover:text-white flex items-center gap-1 group/link" href="https://github.com/Procax/pokemon" target="_blank" rel="noopener noreferrer">
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:rotate-12">code</span>
 <span>GitHub Repo</span>
 </a>
@@ -720,7 +724,7 @@ export default function App() {
 </svg>
 </a>
 {/* GitHub */}
-<a className="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high border border-outline-variant hover:border-cyber-cyan text-on-surface-variant hover:text-cyber-cyan flex items-center justify-center transition-all hover:scale-110 active:scale-95" href="https://github.com" rel="noopener noreferrer" target="_blank" title="GitHub">
+<a className="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high border border-outline-variant hover:border-cyber-cyan text-on-surface-variant hover:text-cyber-cyan flex items-center justify-center transition-all hover:scale-110 active:scale-95" href="https://github.com/Procax?tab=repositories" rel="noopener noreferrer" target="_blank" title="GitHub">
 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
 <path clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fillRule="evenodd"></path>
 </svg>

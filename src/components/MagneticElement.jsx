@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useSound } from './SoundEngine';
 
 const MagneticElement = ({ children, className = "", strength = 0.5 }) => {
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const sound = useSound();
 
   const handleMouse = (e) => {
     const { clientX, clientY } = e;
@@ -11,6 +13,10 @@ const MagneticElement = ({ children, className = "", strength = 0.5 }) => {
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
     setPosition({ x: middleX * strength, y: middleY * strength });
+  };
+
+  const handleEnter = () => {
+    if (sound && sound.playHover) sound.playHover();
   };
 
   const reset = () => {
@@ -21,6 +27,7 @@ const MagneticElement = ({ children, className = "", strength = 0.5 }) => {
     <motion.div
       ref={ref}
       onMouseMove={handleMouse}
+      onMouseEnter={handleEnter}
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
