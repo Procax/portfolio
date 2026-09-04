@@ -242,11 +242,11 @@ export default function App() {
 {/* Main Title & Typographic Gradient with Iridescent Wave */}
 <div className="animate-enter delay-200 flex flex-col gap-2">
 <p className="font-mono text-sm md:text-base text-cyber-blue tracking-wide flex items-center gap-2">
-<span className="text-cyber-cyan">const</span> dev = <span className="text-tertiary">"KaranSinghHajari"</span>;
+<span className="text-cyber-cyan">const</span> dev = <span className="text-tertiary">"Karansingh Hajari"</span>;
             </p>
 <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.08] text-white">
               Hello, I'm <br />
-<span className="text-white">KaranSinghHajari</span>
+<span className="text-white">Karansingh Hajari</span>
 </h1>
 <div className="text-4xl sm:text-6xl font-display font-extrabold tracking-tight">
 <span className="text-white">Front-end </span>
@@ -316,12 +316,12 @@ export default function App() {
 <div className="relative w-full flex-1 rounded-b-xl overflow-hidden group">
 {/* Animated Holographic Laser Scanner Line */}
 <div className="laser-scan-line"></div>
-<img alt="KaranSinghHajari" className="w-full h-full object-cover object-center filter grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" src="/profile.jpg" />
+<img alt="Karansingh Hajari" className="w-full h-full object-cover object-center filter grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" src="/profile.jpg" />
 {/* Monospace Floating HUD Overlays */}
 <div className="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-surface/85 backdrop-blur-md border border-cyber-cyan/30 flex items-center justify-between font-mono text-xs shadow-xl transition-all duration-300 group-hover:border-cyber-cyan/60 group-hover:bg-surface/95 z-20">
 <div>
 <div className="text-[10px] text-cyber-cyan uppercase font-bold tracking-wider">Developer Node</div>
-<div className="text-white font-semibold text-xs">KaranSinghHajari</div>
+<div className="text-white font-semibold text-xs">Karansingh Hajari</div>
 </div>
 <div className="text-right">
 <div className="text-[10px] text-on-surface-variant uppercase">Stack Focus</div>
@@ -670,7 +670,7 @@ export default function App() {
           </p>
 </div>
 {/* Terminal Form */}
-<form className="relative z-10 max-w-xl mx-auto flex flex-col gap-5" onSubmit={(e) => { e.preventDefault(); alert('Transmission dispatched to KaranSinghHajari.'); }}>
+<form className="relative z-10 max-w-xl mx-auto flex flex-col gap-5" onSubmit={(e) => { e.preventDefault(); alert('Transmission dispatched to Karansingh Hajari.'); }}>
 {/* Name Field */}
 <div className="flex flex-col gap-1 text-left">
 <label className="font-mono text-xs text-cyber-cyan uppercase tracking-wider">Name</label>
@@ -695,7 +695,7 @@ export default function App() {
 </div>
 <div className="text-center font-mono text-[11px] text-on-surface-variant flex items-center justify-center gap-1.5 pt-1">
 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-<span>Direct pipeline: karansinghhajari@gmail.com</span>
+<span>Direct pipeline: <a href="mailto:karanhajari7@gmail.com" className="text-cyber-cyan hover:underline">karanhajari7@gmail.com</a></span>
 </div>
 </form>
 </div>
@@ -706,7 +706,7 @@ export default function App() {
 <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
 {/* Brand & Copyright */}
 <div className="flex flex-col items-center md:items-start gap-1 text-center md:text-left font-mono">
-<span className="font-display font-bold text-white text-base tracking-tight">KaranSinghHajari</span>
+<span className="font-display font-bold text-white text-base tracking-tight">Karansingh Hajari</span>
 <span className="text-xs text-on-surface-variant">© 2026 All rights reserved.</span>
 </div>
 {/* Social Icons (Faithful to Image 2: Facebook, Instagram, GitHub) */}
