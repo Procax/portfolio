@@ -5,8 +5,9 @@ const navItems = [
   { id: 'home',    label: 'Home',    icon: 'terminal',    href: '#home'    },
   { id: 'about',   label: 'About',   icon: 'person',      href: '#about'   },
   { id: 'skills',  label: 'Skills',  icon: 'code',        href: '#skills'  },
-  { id: 'work',    label: 'Work',    icon: 'folder_open', href: '#work'    },
-  { id: 'contact', label: 'Contact', icon: 'mail',        href: '#contact' },
+  { id: 'work',      label: 'Work',      icon: 'folder_open', href: '#work'      },
+  { id: 'contact',   label: 'Contact',   icon: 'mail',        href: '#contact'   },
+  { id: 'telemetry', label: 'Nodes',     icon: 'public',      href: '#telemetry' },
 ];
 
 const MobileNav = () => {

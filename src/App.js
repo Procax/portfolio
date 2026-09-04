@@ -18,6 +18,7 @@ import { ThemeProvider } from "./components/ThemeContext";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import GlitchFilter from "./components/GlitchFilter";
 import SlotCounter from "./components/SlotCounter";
+import GlobalTelemetryMap from "./components/GlobalTelemetryMap";
 
 export default function App() {
   const [booting, setBooting] = useState(true);
@@ -260,6 +261,9 @@ export default function App() {
         </a>
 <a className="text-on-surface-variant hover:text-cyber-cyan transition-colors flex items-center gap-1.5 hover:translate-x-0.5 duration-200" href="#contact">
 <span className="text-cyber-blue/40">[04]</span> Contact
+        </a>
+<a className="text-on-surface-variant hover:text-cyber-cyan transition-colors flex items-center gap-1.5 hover:translate-x-0.5 duration-200" href="#telemetry">
+<span className="text-cyber-blue/40">[05]</span> Telemetry
         </a>
 </nav>
 {/* Telemetry Status & External Hub */}
@@ -801,6 +805,8 @@ export default function App() {
 </form>
 </div>
 </section>
+{/* ==================== 05. GLOBAL CYBER TELEMETRY & PRESENCE ==================== */}
+<GlobalTelemetryMap />
 </main>
 {/* ==================== FOOTER ==================== */}
 <footer className="w-full bg-surface-dim border-t border-outline-variant/50 py-10">
