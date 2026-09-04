@@ -5,6 +5,7 @@ import ParticlesBG from "./components/ParticlesBG";
 import MagneticElement from "./components/MagneticElement";
 import DecodeText from "./components/DecodeText";
 import { SoundProvider, SoundToggle } from "./components/SoundEngine";
+import { motion, useScroll, useTransform } from "framer-motion";
 import CyberCore3D from "./components/CyberCore3D";
 import KineticMarquee from "./components/KineticMarquee";
 import CircuitScrollLine from "./components/CircuitScrollLine";
@@ -13,6 +14,10 @@ import CursorTrail from "./components/CursorTrail";
 
 export default function App() {
   const [booting, setBooting] = useState(true);
+
+  // Dynamic Depth of Field (Scroll Blur)
+  const { scrollYProgress } = useScroll();
+  const backgroundBlur = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], ["blur(0px)", "blur(12px)", "blur(12px)", "blur(4px)"]);
 
   useEffect(() => {
     if (booting) return;
@@ -160,9 +165,11 @@ export default function App() {
       <SoundToggle />
       <CursorTrail />
       <CircuitScrollLine />
-      <KineticMarquee text="FRONT-END ENGINEER • UI/UX • CYBER-TECH " />
       <div className="crt-overlay pointer-events-none fixed inset-0 z-50"></div>
-      <ParticlesBG />
+        <motion.div style={{ filter: backgroundBlur }} className="fixed inset-0 z-0 pointer-events-none">
+          <KineticMarquee text="FRONT-END ENGINEER • UI/UX • CYBER-TECH " />
+          <ParticlesBG />
+        </motion.div>
 
 {/* Cursor Dynamic Spotlight */}
 <div id="cursor-glow" style={{ left: "-999px", top: "-999px" }}></div>
