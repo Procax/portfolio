@@ -78,19 +78,26 @@ export default function App() {
 
     // 1. Dynamic Cursor Radial Glow Follower
     const cursorGlow = document.getElementById('cursor-glow');
-    if (cursorGlow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      window.addEventListener('pointermove', (e) => {
+    const handlePointerMove = (e) => {
+      if (cursorGlow) {
         cursorGlow.style.left = `${e.clientX}px`;
         cursorGlow.style.top = `${e.clientY}px`;
-      });
+      }
+    };
+    if (cursorGlow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.addEventListener('pointermove', handlePointerMove);
     }
 
     // 2. Interactive 3D Card Tilt with Specular Reflection tracking
     const heroCard = document.getElementById('hero-portrait-card');
+    let cardContainer = null;
+    let handleMove = null;
+    let handleLeave = null;
+
     if (heroCard && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const cardContainer = heroCard.closest('.tilt-wrapper');
+      cardContainer = heroCard.closest('.tilt-wrapper');
       
-      const handleMove = (e) => {
+      handleMove = (e) => {
         const rect = heroCard.getBoundingClientRect();
         const cardX = e.clientX - rect.left;
         const cardY = e.clientY - rect.top;
@@ -98,7 +105,7 @@ export default function App() {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateX = ((cardY - centerY) / centerY) * -12; // tilt degrees
+        const rotateX = ((cardY - centerY) / centerY) * -12;
         const rotateY = ((cardX - centerX) / centerX) * 12;
         
         heroCard.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
@@ -106,20 +113,23 @@ export default function App() {
         heroCard.style.setProperty('--shine-y', `${(cardY / rect.height) * 100}%`);
       };
 
-      const handleLeave = () => {
+      handleLeave = () => {
         heroCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         heroCard.style.setProperty('--shine-x', `50%`);
         heroCard.style.setProperty('--shine-y', `50%`);
       };
 
-      cardContainer.addEventListener('mousemove', handleMove);
-      cardContainer.addEventListener('mouseleave', handleLeave);
+      if (cardContainer) {
+        cardContainer.addEventListener('mousemove', handleMove);
+        cardContainer.addEventListener('mouseleave', handleLeave);
+      }
     }
 
     // 3. Scroll-Driven IntersectionObserver for elements with .reveal-on-scroll
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    let revealObserver = null;
     if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
+      revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-revealed');
@@ -133,21 +143,21 @@ export default function App() {
 
       revealElements.forEach(el => revealObserver.observe(el));
     } else {
-      // Fallback
       revealElements.forEach(el => el.classList.add('is-revealed'));
     }
 
     // 4. Subtle Terminal Brand Text Glitch / Hover Effect
     const terminalBrand = document.getElementById('terminal-brand');
+    let brandInterval = null;
+    let handleBrandHover = null;
     if (terminalBrand) {
       const originalText = "~/karansingh-hajari";
       const glitchChars = "!<>-_\\/[]{}—=+*^?#________";
-      let interval = null;
 
-      terminalBrand.addEventListener('mouseenter', () => {
+      handleBrandHover = () => {
         let iteration = 0;
-        clearInterval(interval);
-        interval = setInterval(() => {
+        clearInterval(brandInterval);
+        brandInterval = setInterval(() => {
           terminalBrand.innerText = originalText
             .split("")
             .map((char, index) => {
@@ -159,15 +169,18 @@ export default function App() {
             .join("");
 
           if (iteration >= originalText.length) {
-            clearInterval(interval);
+            clearInterval(brandInterval);
           }
           iteration += 1 / 2;
         }, 25);
-      });
+      };
+
+      terminalBrand.addEventListener('mouseenter', handleBrandHover);
     }
 
     // 5. Simulated Terminal Command Typewriter Loop for CLI block
     const typewriterEl = document.getElementById('typewriter-cli');
+    let typewriterTimeout = null;
     if (typewriterEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const commands = [
         "npx karansingh-hajari --portfolio",
@@ -194,20 +207,35 @@ export default function App() {
         }
 
         if (!isDeleting && charIndex === currentCmd.length) {
-          typingDelay = 3200; // Pause at full word
+          typingDelay = 3200;
           isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
           isDeleting = false;
           cmdIndex = (cmdIndex + 1) % commands.length;
-          typingDelay = 600; // Pause before new word
+          typingDelay = 600;
         }
 
-        setTimeout(typeLoop, typingDelay);
+        typewriterTimeout = setTimeout(typeLoop, typingDelay);
       }
       
-      // Delay start so initial entrance settles
-      setTimeout(typeLoop, 2000);
+      typewriterTimeout = setTimeout(typeLoop, 2000);
     }
+
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      if (cardContainer) {
+        cardContainer.removeEventListener('mousemove', handleMove);
+        cardContainer.removeEventListener('mouseleave', handleLeave);
+      }
+      if (revealObserver) {
+        revealObserver.disconnect();
+      }
+      if (terminalBrand && handleBrandHover) {
+        terminalBrand.removeEventListener('mouseenter', handleBrandHover);
+      }
+      clearInterval(brandInterval);
+      clearTimeout(typewriterTimeout);
+    };
   }, [booting]);
 
   if (booting) {
@@ -399,7 +427,7 @@ export default function App() {
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
 <span>{"// "}<SlotCounter value="01" />{". PROFILE_LOG"}</span>
 </div>
-<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover cyber-glitch-tear cursor-pointer" data-text="About">About</h2>
+<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight cyber-glitch-tear cursor-pointer">About</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>
 </div>
 {/* Cyber Terminal Container with reveal and hover elevation */}
@@ -437,7 +465,7 @@ export default function App() {
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
 <span>{"// "}<SlotCounter value="02" />{". SYSTEM_TOOLKIT"}</span>
 </div>
-<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover cyber-glitch-tear cursor-pointer" data-text="Core Stack">Core Stack</h2>
+<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight cyber-glitch-tear cursor-pointer">Core Stack</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>
 <p className="text-on-surface-variant font-mono text-xs mt-2">Engineered with high-reliability technologies &amp; modern tools</p>
 </div>
@@ -530,7 +558,7 @@ export default function App() {
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
 <span>{"// "}<SlotCounter value="03" />{". SHIPPED_BUILDS"}</span>
 </div>
-<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover cyber-glitch-tear cursor-pointer" data-text="Selected Work">Selected Work</h2>
+<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight cyber-glitch-tear cursor-pointer">Selected Work</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>
 <p className="text-on-surface-variant font-mono text-xs mt-2">Production web applications &amp; interactive systems</p>
 </div>
@@ -721,7 +749,7 @@ export default function App() {
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
 <span>{"// "}<SlotCounter value="04" />{". TRANSMISSION_PORT"}</span>
 </div>
-<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover cyber-glitch-tear cursor-pointer" data-text="Contact me">Contact me</h2>
+<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight cyber-glitch-tear cursor-pointer">Contact me</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full"></div>
 <p className="text-on-surface-variant text-sm sm:text-base max-w-lg mt-2">
             I'd love to hear about your project and how I can help. Share a few details below, and I'll get back to you shortly.
@@ -844,9 +872,6 @@ export default function App() {
 </div>
 </div>
 </footer>
-{/* ==================== DYNAMIC CYBER-TECH MOTION CONTROLLER ==================== */}
-
-
     </SoundProvider>
   </ThemeProvider>
 );

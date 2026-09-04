@@ -447,7 +447,7 @@ export default function GlobalTelemetryMap() {
         <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
           <span>{"// "}<SlotCounter value="05" />{". GLOBAL_TELEMETRY"}</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover cyber-glitch-tear cursor-pointer" data-text="World Telemetry">
+        <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight cyber-glitch-tear cursor-pointer">
           World Telemetry &amp; Presence
         </h2>
         <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>

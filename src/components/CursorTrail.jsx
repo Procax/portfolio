@@ -25,8 +25,6 @@ const CursorTrail = () => {
     let particles = [];
     
     const mouse = { x: -1000, y: -1000 };
-    
-    let timeout;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -39,9 +37,6 @@ const CursorTrail = () => {
     const handleMouseMove = (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
-      
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {}, 100);
       
       particles.push({
         x: mouse.x,
