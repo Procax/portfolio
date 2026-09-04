@@ -2,12 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+:root, [data-theme="cyan"] {
+  --surface-rgb: 9 13 22;
+  --surface-dim-rgb: 6 9 16;
+  --surface-container-rgb: 14 20 34;
+  --surface-container-high-rgb: 21 28 46;
+  --surface-container-highest-rgb: 28 38 60;
+  --cyber-cyan-rgb: 0 242 254;
+  --cyber-blue-rgb: 56 189 248;
+  --cyber-violet-rgb: 168 85 247;
+  --primary-rgb: 56 189 248;
+  --secondary-rgb: 0 242 254;
+  --tertiary-rgb: 192 132 252;
+  --on-surface-rgb: 226 232 240;
+  --on-surface-variant-rgb: 148 163 184;
+  --outline-rgb: 51 65 85;
+  --outline-variant-rgb: 30 41 59;
+}
+
+[data-theme="matrix"] {
+  --surface-rgb: 3 8 4;
+  --surface-dim-rgb: 1 4 2;
+  --surface-container-rgb: 6 18 8;
+  --surface-container-high-rgb: 12 28 16;
+  --surface-container-highest-rgb: 18 40 24;
+  --cyber-cyan-rgb: 0 255 102;
+  --cyber-blue-rgb: 34 197 94;
+  --cyber-violet-rgb: 57 255 20;
+  --primary-rgb: 0 255 102;
+  --secondary-rgb: 34 197 94;
+  --tertiary-rgb: 74 222 128;
+  --on-surface-rgb: 220 252 231;
+  --on-surface-variant-rgb: 134 239 172;
+  --outline-rgb: 20 83 45;
+  --outline-variant-rgb: 5 46 22;
+}
+
+[data-theme="cyberpunk"] {
+  --surface-rgb: 13 11 6;
+  --surface-dim-rgb: 8 6 3;
+  --surface-container-rgb: 24 20 8;
+  --surface-container-high-rgb: 38 30 10;
+  --surface-container-highest-rgb: 54 42 12;
+  --cyber-cyan-rgb: 254 231 21;
+  --cyber-blue-rgb: 255 0 85;
+  --cyber-violet-rgb: 0 240 255;
+  --primary-rgb: 254 231 21;
+  --secondary-rgb: 255 0 85;
+  --tertiary-rgb: 244 63 94;
+  --on-surface-rgb: 254 249 195;
+  --on-surface-variant-rgb: 253 224 71;
+  --outline-rgb: 113 63 18;
+  --outline-variant-rgb: 69 26 3;
+}
+
+[data-theme="ghost"] {
+  --surface-rgb: 10 8 21;
+  --surface-dim-rgb: 5 4 13;
+  --surface-container-rgb: 18 14 36;
+  --surface-container-high-rgb: 28 22 56;
+  --surface-container-highest-rgb: 40 32 78;
+  --cyber-cyan-rgb: 192 132 252;
+  --cyber-blue-rgb: 129 140 248;
+  --cyber-violet-rgb: 56 189 248;
+  --primary-rgb: 192 132 252;
+  --secondary-rgb: 129 140 248;
+  --tertiary-rgb: 232 121 249;
+  --on-surface-rgb: 245 243 255;
+  --on-surface-variant-rgb: 196 181 253;
+  --outline-rgb: 76 29 149;
+  --outline-variant-rgb: 46 16 101;
+}
+
     @layer base {
       html, body {
         margin: 0;
         padding: 0;
-        background-color: #090d16;
-        color: #e2e8f0;
+        background-color: rgb(var(--surface-rgb));
+        color: rgb(var(--on-surface-rgb));
+        transition: background-color 0.4s ease, color 0.4s ease;
       }
       ::-webkit-scrollbar { display: none; }
     }
@@ -27,7 +100,7 @@
       left: 0;
       right: 0;
       height: 100%;
-      background: linear-gradient(180deg, transparent, rgba(0, 242, 254, 0.035) 50%, rgba(56, 189, 248, 0.08) 98%, #00f2fe 100%);
+      background: linear-gradient(180deg, transparent, rgb(var(--cyber-cyan-rgb) / 0.035) 50%, rgb(var(--cyber-blue-rgb) / 0.08) 98%, rgb(var(--cyber-cyan-rgb)) 100%);
       pointer-events: none;
       z-index: 1;
       animation: sweepBeam 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -47,15 +120,15 @@
 
     /* Glow utility tokens */
     .glow-cyan {
-      box-shadow: 0 0 25px -5px rgba(0, 242, 254, 0.35);
+      box-shadow: 0 0 25px -5px rgb(var(--cyber-cyan-rgb) / 0.35);
     }
     .glow-blue {
-      box-shadow: 0 0 30px -5px rgba(56, 189, 248, 0.28);
+      box-shadow: 0 0 30px -5px rgb(var(--cyber-blue-rgb) / 0.28);
     }
 
     /* Animated Iridescent Gradient for 'Developer' */
     .animated-gradient-text {
-      background: linear-gradient(90deg, #38bdf8, #00f2fe, #a855f7, #38bdf8, #22d3ee);
+      background: linear-gradient(90deg, rgb(var(--cyber-blue-rgb)), rgb(var(--cyber-cyan-rgb)), rgb(var(--cyber-violet-rgb)), rgb(var(--cyber-blue-rgb)));
       background-size: 300% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -72,8 +145,8 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.9), #ffffff, rgba(0, 242, 254, 0.9), transparent);
-      box-shadow: 0 0 14px 2px rgba(0, 242, 254, 0.85);
+      background: linear-gradient(90deg, transparent, rgb(var(--cyber-cyan-rgb) / 0.9), #ffffff, rgb(var(--cyber-cyan-rgb) / 0.9), transparent);
+      box-shadow: 0 0 14px 2px rgb(var(--cyber-cyan-rgb) / 0.85);
       pointer-events: none;
       z-index: 25;
       animation: scanVertical 3.8s ease-in-out infinite alternate;
@@ -114,7 +187,7 @@
       width: 550px;
       height: 550px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0, 242, 254, 0.075) 0%, rgba(56, 189, 248, 0.035) 45%, transparent 70%);
+      background: radial-gradient(circle, rgb(var(--cyber-cyan-rgb) / 0.08) 0%, rgb(var(--cyber-blue-rgb) / 0.035) 45%, transparent 70%);
       pointer-events: none;
       transform: translate(-50%, -50%);
       z-index: 0;
@@ -156,9 +229,9 @@
       background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(0, 242, 254, 0.12) 40%,
-        rgba(0, 242, 254, 0.35) 50%,
-        rgba(56, 189, 248, 0.12) 60%,
+        rgb(var(--cyber-cyan-rgb) / 0.12) 40%,
+        rgb(var(--cyber-cyan-rgb) / 0.35) 50%,
+        rgb(var(--cyber-blue-rgb) / 0.12) 60%,
         transparent 100%
       );
       transform: translateX(-110%);
@@ -195,7 +268,7 @@
       inset: 50%;
       width: 0;
       height: 0;
-      background: radial-gradient(circle, rgba(0, 242, 254, 0.5) 0%, transparent 70%);
+      background: radial-gradient(circle, rgb(var(--cyber-cyan-rgb) / 0.5) 0%, transparent 70%);
       border-radius: 50%;
       transform: translate(-50%, -50%);
       opacity: 0;
@@ -219,7 +292,7 @@
     }
     .stack-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 28px -6px rgba(0, 242, 254, 0.22);
+      box-shadow: 0 12px 28px -6px rgb(var(--cyber-cyan-rgb) / 0.22);
     }
 
     /* Project Cards Hover Glow Frame */
@@ -228,7 +301,7 @@
     }
     .project-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 36px -8px rgba(0, 242, 254, 0.28);
+      box-shadow: 0 16px 36px -8px rgb(var(--cyber-cyan-rgb) / 0.28);
     }
     .project-card:hover .window-dot {
       animation: dotPulse 1.2s ease-in-out infinite alternate;
@@ -268,8 +341,8 @@
       transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
     .cyber-input:focus {
-      border-color: #00f2fe;
-      box-shadow: 0 0 16px rgba(0, 242, 254, 0.25), inset 0 0 10px rgba(0, 242, 254, 0.05);
+      border-color: rgb(var(--cyber-cyan-rgb));
+      box-shadow: 0 0 16px rgb(var(--cyber-cyan-rgb) / 0.25), inset 0 0 10px rgb(var(--cyber-cyan-rgb) / 0.05);
     }
 
     /* Respect accessibility */

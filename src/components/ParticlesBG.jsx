@@ -1,8 +1,11 @@
 import React, { useCallback } from 'react';
 import Particles, { ParticlesProvider } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { useTheme } from "./ThemeContext";
 
 const ParticlesBG = () => {
+  const { activeThemeConfig } = useTheme();
+
   const init = useCallback(async (engine) => {
     await loadSlim(engine);
   }, []);
@@ -11,6 +14,7 @@ const ParticlesBG = () => {
     <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
       <ParticlesProvider init={init}>
         <Particles
+          key={activeThemeConfig?.id || "default"}
           id="tsparticles"
           options={{
             background: {
@@ -18,9 +22,9 @@ const ParticlesBG = () => {
             },
             fpsLimit: 60,
             particles: {
-              color: { value: "#00f2fe" },
+              color: { value: activeThemeConfig?.colorHex || "#00f2fe" },
               links: {
-                color: "#38bdf8",
+                color: activeThemeConfig?.accentHex || "#38bdf8",
                 distance: 150,
                 enable: true,
                 opacity: 0.2,

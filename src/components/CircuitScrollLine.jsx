@@ -11,7 +11,7 @@ const CircuitScrollLine = () => {
         <motion.path
           d="M 10,0 L 10,200 L 0,210 L 0,300 L 20,320 L 20,600 L 10,610 L 10,1000"
           fill="none"
-          stroke="#00f2fe"
+          stroke="rgb(var(--cyber-cyan-rgb))"
           strokeWidth="2"
           style={{ pathLength }}
           className="glow-cyan"
@@ -20,14 +20,14 @@ const CircuitScrollLine = () => {
           cx="10"
           cy="10"
           r="4"
-          fill="#00f2fe"
+          fill="rgb(var(--cyber-cyan-rgb))"
           style={{ scale: useTransform(scrollYProgress, [0, 0.05], [0, 1]) }}
         />
         <motion.circle
           cx="10"
           cy="990"
           r="4"
-          fill="#00f2fe"
+          fill="rgb(var(--cyber-cyan-rgb))"
           style={{ scale: useTransform(scrollYProgress, [0.95, 1], [0, 1]) }}
         />
       </svg>

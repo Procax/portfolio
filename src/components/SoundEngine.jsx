@@ -189,7 +189,7 @@ export const SoundToggle = () => {
         setIsMuted(!isMuted);
         if (isMuted) playClick();
       }}
-      className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 rounded-full bg-surface-container-high border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan hover:border-cyber-cyan transition-all hover:scale-110 shadow-[0_0_15px_rgba(0,242,254,0.15)]"
+      className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 rounded-full bg-surface-container-high border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan hover:border-cyber-cyan transition-all hover:scale-110 glow-cyan"
       title={isMuted ? "Unmute Audio" : "Mute Audio"}
     >
       <span className="material-symbols-outlined text-[20px]">

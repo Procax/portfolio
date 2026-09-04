@@ -1,7 +1,22 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from './ThemeContext';
+
+const hexToRgb = (hex) => {
+  const c = hex ? hex.replace('#', '') : '00f2fe';
+  const num = parseInt(c, 16);
+  return `${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255}`;
+};
 
 const CursorTrail = () => {
   const canvasRef = useRef(null);
+  const { activeThemeConfig } = useTheme();
+  const themeColorRef = useRef('0, 242, 254');
+
+  useEffect(() => {
+    if (activeThemeConfig?.colorHex) {
+      themeColorRef.current = hexToRgb(activeThemeConfig.colorHex);
+    }
+  }, [activeThemeConfig]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -33,7 +48,7 @@ const CursorTrail = () => {
         y: mouse.y,
         size: Math.random() * 2 + 1,
         life: 1,
-        color: `rgba(0, 242, 254, ${Math.random()})`
+        color: `rgba(${themeColorRef.current}, ${Math.random()})`
       });
     };
 

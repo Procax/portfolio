@@ -13,6 +13,9 @@ import XRayCard from "./components/XRayCard";
 import CursorTrail from "./components/CursorTrail";
 import MobileNav from "./components/MobileNav";
 import SectionSoundTrigger from "./components/SectionSoundTrigger";
+import emailjs from "emailjs-com";
+import { ThemeProvider } from "./components/ThemeContext";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 export default function App() {
   const [booting, setBooting] = useState(true);
@@ -20,6 +23,52 @@ export default function App() {
   // Dynamic Depth of Field (Scroll Blur)
   const { scrollYProgress } = useScroll();
   const backgroundBlur = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], ["blur(0px)", "blur(12px)", "blur(12px)", "blur(4px)"]);
+
+  // Contact Form State & EmailJS Pipeline
+  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+  const [dispatchStatus, setDispatchStatus] = useState("idle"); // 'idle' | 'sending' | 'success' | 'error'
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const handleContactChange = (e) => {
+    const { name, value } = e.target;
+    setContactForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    setDispatchStatus("sending");
+    setStatusMessage("ENCRYPTING & DISPATCHING PACKET...");
+
+    emailjs
+      .send(
+        "service_qgeuumo",
+        "template_u17uqyh",
+        {
+          name: contactForm.name,
+          from_name: contactForm.name,
+          email: contactForm.email,
+          from_email: contactForm.email,
+          reply_to: contactForm.email,
+          message: contactForm.message,
+          to_name: "Karansingh Hajari",
+        },
+        "MSiiaJGUAycgHvPTa"
+      )
+      .then(
+        () => {
+          setDispatchStatus("success");
+          setStatusMessage("TRANSMISSION CONFIRMED [200 OK] — Message received by Karansingh Hajari.");
+          setContactForm({ name: "", email: "", message: "" });
+          setTimeout(() => setDispatchStatus("idle"), 6000);
+        },
+        (error) => {
+          console.error("Email transmission failed:", error);
+          setDispatchStatus("error");
+          setStatusMessage("TRANSMISSION TIMEOUT (500) — Please reach out directly to karanhajari7@gmail.com");
+          setTimeout(() => setDispatchStatus("idle"), 7000);
+        }
+      );
+  };
 
   useEffect(() => {
     if (booting) return;
@@ -163,7 +212,8 @@ export default function App() {
   }
 
   return (
-    <SoundProvider>
+    <ThemeProvider>
+      <SoundProvider>
       <SectionSoundTrigger />
       <SoundToggle />
       <MobileNav />
@@ -218,6 +268,7 @@ export default function App() {
 </span>
 <span className="text-cyber-cyan tracking-wide font-medium">OPEN TO WORK</span>
 </div>
+<ThemeSwitcher />
 <a className="p-2 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant hover:border-cyber-blue/50 text-on-surface transition-all flex items-center gap-1 text-xs font-mono hover:scale-105 active:scale-95" href="https://github.com/Procax?tab=repositories" rel="noopener noreferrer" target="_blank" title="GitHub Profile">
 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
 <path clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fillRule="evenodd"></path>
@@ -670,27 +721,74 @@ export default function App() {
           </p>
 </div>
 {/* Terminal Form */}
-<form className="relative z-10 max-w-xl mx-auto flex flex-col gap-5" onSubmit={(e) => { e.preventDefault(); alert('Transmission dispatched to Karansingh Hajari.'); }}>
+<form className="relative z-10 max-w-xl mx-auto flex flex-col gap-5" onSubmit={handleContactSubmit}>
 {/* Name Field */}
 <div className="flex flex-col gap-1 text-left">
 <label className="font-mono text-xs text-cyber-cyan uppercase tracking-wider">Name</label>
-<input className="cyber-input w-full px-4 py-3 rounded-xl bg-surface-dim/90 border border-outline-variant/80 text-white font-sans text-sm focus:outline-none placeholder:text-outline/70" placeholder="Your name or organization" required type="text" />
+<input
+  className="cyber-input w-full px-4 py-3 rounded-xl bg-surface-dim/90 border border-outline-variant/80 text-white font-sans text-sm focus:outline-none placeholder:text-outline/70"
+  name="name"
+  placeholder="Your name or organization"
+  required
+  type="text"
+  value={contactForm.name}
+  onChange={handleContactChange}
+/>
 </div>
 {/* Email Field */}
 <div className="flex flex-col gap-1 text-left">
 <label className="font-mono text-xs text-cyber-cyan uppercase tracking-wider">Email</label>
-<input className="cyber-input w-full px-4 py-3 rounded-xl bg-surface-dim/90 border border-outline-variant/80 text-white font-sans text-sm focus:outline-none placeholder:text-outline/70" placeholder="name@domain.com" required type="email" />
+<input
+  className="cyber-input w-full px-4 py-3 rounded-xl bg-surface-dim/90 border border-outline-variant/80 text-white font-sans text-sm focus:outline-none placeholder:text-outline/70"
+  name="email"
+  placeholder="name@domain.com"
+  required
+  type="email"
+  value={contactForm.email}
+  onChange={handleContactChange}
+/>
 </div>
 {/* Message Field */}
 <div className="flex flex-col gap-1 text-left">
 <label className="font-mono text-xs text-cyber-cyan uppercase tracking-wider">Message</label>
-<textarea className="cyber-input w-full px-4 py-3 rounded-xl bg-surface-dim/90 border border-outline-variant/80 text-white font-sans text-sm focus:outline-none placeholder:text-outline/70 resize-none" placeholder="Tell me about your product requirements, deadlines, or role..." required rows="4"></textarea>
+<textarea
+  className="cyber-input w-full px-4 py-3 rounded-xl bg-surface-dim/90 border border-outline-variant/80 text-white font-sans text-sm focus:outline-none placeholder:text-outline/70 resize-none"
+  name="message"
+  placeholder="Tell me about your product requirements, deadlines, or role..."
+  required
+  rows="4"
+  value={contactForm.message}
+  onChange={handleContactChange}
+></textarea>
 </div>
-{/* Send Message Button (Faithful to Image 2 Blue Button with radar pulse effect) */}
+{/* High-Tech Terminal Transmission Feedback */}
+{dispatchStatus !== "idle" && (
+  <div
+    className={`p-3.5 rounded-xl border font-mono text-xs text-center flex items-center justify-center gap-2 transition-all duration-300 ${
+      dispatchStatus === "sending"
+        ? "bg-cyber-cyan/10 border-cyber-cyan/50 text-cyber-cyan animate-pulse shadow-[0_0_20px_rgba(0,242,254,0.2)]"
+        : dispatchStatus === "success"
+        ? "bg-emerald-500/10 border-emerald-400 text-emerald-300 shadow-[0_0_20px_rgba(52,211,153,0.2)]"
+        : "bg-rose-500/10 border-rose-400 text-rose-300"
+    }`}
+  >
+    <span className="material-symbols-outlined text-[16px]">
+      {dispatchStatus === "sending" ? "sync" : dispatchStatus === "success" ? "check_circle" : "warning"}
+    </span>
+    <span>{statusMessage}</span>
+  </div>
+)}
+{/* Send Message Button */}
 <div className="pt-2 flex justify-center">
-<button className="btn-cyber-primary w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-cyber-blue to-cyber-cyan text-surface-dim font-mono text-sm font-bold glow-cyan hover:shadow-[0_0_32px_rgba(0,242,254,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
-<span>Send Message</span>
-<span className="material-symbols-outlined text-[18px] transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5">send</span>
+<button
+  className="btn-cyber-primary w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-cyber-blue to-cyber-cyan text-surface-dim font-mono text-sm font-bold glow-cyan hover:shadow-[0_0_32px_rgba(0,242,254,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+  type="submit"
+  disabled={dispatchStatus === "sending"}
+>
+<span>{dispatchStatus === "sending" ? "DISPATCHING PACKET..." : "Send Message"}</span>
+<span className="material-symbols-outlined text-[18px] transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5">
+  {dispatchStatus === "sending" ? "hourglass_top" : "send"}
+</span>
 </button>
 </div>
 <div className="text-center font-mono text-[11px] text-on-surface-variant flex items-center justify-center gap-1.5 pt-1">
@@ -741,5 +839,6 @@ export default function App() {
 
 
     </SoundProvider>
-  );
+  </ThemeProvider>
+);
 }

@@ -23,7 +23,7 @@ const XRayCard = ({ children, className, style }) => {
           background: useMotionTemplate`
             radial-gradient(
               400px circle at ${mouseX}px ${mouseY}px,
-              rgba(0, 242, 254, 0.15),
+              rgb(var(--cyber-cyan-rgb) / 0.18),
               transparent 80%
             )
           `,

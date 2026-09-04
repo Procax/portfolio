@@ -83,11 +83,11 @@ const MobileNav = () => {
           <div
             className="flex items-center gap-0.5 px-2 py-2 mx-4 rounded-2xl border border-white/10"
             style={{
-              background: 'rgba(9, 13, 22, 0.82)',
+              background: 'rgb(var(--surface-rgb) / 0.85)',
               backdropFilter: 'blur(28px)',
               WebkitBackdropFilter: 'blur(28px)',
               boxShadow:
-                '0 -4px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,242,254,0.08), inset 0 1px 0 rgba(255,255,255,0.05)',
+                '0 -4px 32px rgba(0,0,0,0.4), 0 0 0 1px rgb(var(--cyber-cyan-rgb) / 0.15), inset 0 1px 0 rgba(255,255,255,0.05)',
             }}
           >
             {navItems.map((item) => {
@@ -109,8 +109,8 @@ const MobileNav = () => {
                       layoutId="nav-pill"
                       className="absolute inset-0 rounded-xl"
                       style={{
-                        background: 'rgba(0,242,254,0.10)',
-                        boxShadow: '0 0 14px rgba(0,242,254,0.18)',
+                        background: 'rgb(var(--cyber-cyan-rgb) / 0.12)',
+                        boxShadow: '0 0 14px rgb(var(--cyber-cyan-rgb) / 0.25)',
                       }}
                       transition={{ type: 'spring', stiffness: 420, damping: 32 }}
                     />
@@ -122,7 +122,7 @@ const MobileNav = () => {
                     style={{
                       fontSize: isActive ? '22px' : '20px',
                       filter: isActive
-                        ? 'drop-shadow(0 0 5px rgba(0,242,254,0.9))'
+                        ? 'drop-shadow(0 0 6px rgb(var(--cyber-cyan-rgb) / 0.85))'
                         : 'none',
                     }}
                   >
@@ -145,7 +145,7 @@ const MobileNav = () => {
                     <motion.span
                       layoutId="nav-dot"
                       className="absolute -bottom-1 block w-1 h-1 rounded-full bg-cyber-cyan"
-                      style={{ boxShadow: '0 0 8px rgba(0,242,254,1)' }}
+                      style={{ boxShadow: '0 0 8px rgb(var(--cyber-cyan-rgb))' }}
                     />
                   )}
                 </motion.button>
