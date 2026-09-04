@@ -19,6 +19,7 @@ import ThemeSwitcher from "./components/ThemeSwitcher";
 import GlitchFilter from "./components/GlitchFilter";
 import SlotCounter from "./components/SlotCounter";
 import GlobalTelemetryMap from "./components/GlobalTelemetryMap";
+import SkillsRadarChart from "./components/SkillsRadarChart";
 
 export default function App() {
   const [booting, setBooting] = useState(true);
@@ -550,6 +551,8 @@ export default function App() {
 <span className="font-mono text-[11px] text-purple-400">Component Frameworks</span>
 </div>
 </div>
+{/* Cybernetic Skills Radar Chart */}
+<SkillsRadarChart />
 </section>
 {/* ==================== 04. SELECTED WORK SECTION ==================== */}
 <section className="max-w-7xl mx-auto px-4 md:px-8 py-16" id="work">
