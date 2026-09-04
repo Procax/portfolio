@@ -364,3 +364,42 @@
       }
     }
 
+    /* ========== 3D HOLOGRAPHIC PARALLAX DEPTH LAYERS ========== */
+    .preserve-3d {
+      transform-style: preserve-3d;
+    }
+    .layer-depth-1 {
+      transform: translateZ(16px);
+      transform-style: preserve-3d;
+    }
+    .layer-depth-2 {
+      transform: translateZ(32px);
+      transform-style: preserve-3d;
+    }
+    .layer-depth-3 {
+      transform: translateZ(48px);
+      transform-style: preserve-3d;
+    }
+    .layer-depth-pop {
+      transform: translateZ(24px);
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .project-card:hover .layer-depth-pop {
+      transform: translateZ(42px) scale(1.02);
+    }
+
+    /* ========== TRUE SVG DISPLACEMENT GLITCH ========== */
+    .cyber-glitch-tear:hover {
+      animation: cyberDisplacementGlitch 0.4s ease-in-out;
+    }
+    @keyframes cyberDisplacementGlitch {
+      0%   { filter: none; transform: none; }
+      15%  { filter: url(#cyber-glitch-filter); transform: skewX(-3deg) scaleY(1.02); }
+      30%  { filter: none; transform: translateX(2px); }
+      45%  { filter: url(#cyber-glitch-filter); transform: skewX(2deg) scaleX(0.99); }
+      65%  { filter: none; transform: translateX(-1px); }
+      80%  { filter: url(#cyber-glitch-filter); transform: skewX(-1.5deg); }
+      100% { filter: none; transform: none; }
+    }
+

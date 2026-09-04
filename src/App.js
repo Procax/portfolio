@@ -16,6 +16,8 @@ import SectionSoundTrigger from "./components/SectionSoundTrigger";
 import emailjs from "emailjs-com";
 import { ThemeProvider } from "./components/ThemeContext";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import GlitchFilter from "./components/GlitchFilter";
+import SlotCounter from "./components/SlotCounter";
 
 export default function App() {
   const [booting, setBooting] = useState(true);
@@ -214,6 +216,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <SoundProvider>
+      <GlitchFilter />
       <SectionSoundTrigger />
       <SoundToggle />
       <MobileNav />
@@ -390,9 +393,9 @@ export default function App() {
 {/* Section Header with scroll reveal */}
 <div className="reveal-on-scroll flex flex-col items-center text-center gap-2 mb-10">
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
-<span>{"// 01. PROFILE_LOG"}</span>
+<span>{"// "}<SlotCounter value="01" />{". PROFILE_LOG"}</span>
 </div>
-<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover" data-text="About">About</h2>
+<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover cyber-glitch-tear cursor-pointer" data-text="About">About</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>
 </div>
 {/* Cyber Terminal Container with reveal and hover elevation */}
@@ -428,9 +431,9 @@ export default function App() {
 {/* Section Header */}
 <div className="reveal-on-scroll flex flex-col items-center text-center gap-2 mb-12">
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
-<span>{"// 02. SYSTEM_TOOLKIT"}</span>
+<span>{"// "}<SlotCounter value="02" />{". SYSTEM_TOOLKIT"}</span>
 </div>
-<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover" data-text="Core Stack">Core Stack</h2>
+<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover cyber-glitch-tear cursor-pointer" data-text="Core Stack">Core Stack</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>
 <p className="text-on-surface-variant font-mono text-xs mt-2">Engineered with high-reliability technologies &amp; modern tools</p>
 </div>
@@ -521,9 +524,9 @@ export default function App() {
 {/* Section Header */}
 <div className="reveal-on-scroll flex flex-col items-center text-center gap-2 mb-12">
 <div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
-<span>{"// 03. SHIPPED_BUILDS"}</span>
+<span>{"// "}<SlotCounter value="03" />{". SHIPPED_BUILDS"}</span>
 </div>
-<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover" data-text="Selected Work">Selected Work</h2>
+<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover cyber-glitch-tear cursor-pointer" data-text="Selected Work">Selected Work</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full mt-1"></div>
 <p className="text-on-surface-variant font-mono text-xs mt-2">Production web applications &amp; interactive systems</p>
 </div>
@@ -531,9 +534,9 @@ export default function App() {
 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 {/* PROJECT 1: Youtube-Clone (Exact from Image 2 with micro-interactions) */}
 <XRayCard className="reveal-on-scroll" style={{ transitionDelay: "100ms" }}>
-<article className="project-card group rounded-2xl bg-surface-container/70 border border-outline-variant hover:border-cyber-cyan/80 overflow-hidden backdrop-blur-md transition-all duration-500 flex flex-col justify-between h-full">
+<article className="project-card preserve-3d group rounded-2xl bg-surface-container/70 border border-outline-variant hover:border-cyber-cyan/80 overflow-hidden backdrop-blur-md transition-all duration-500 flex flex-col justify-between h-full">
 {/* Terminal Mockup Window Header */}
-<div className="h-8 px-4 bg-surface-container-highest/90 flex items-center justify-between border-b border-outline-variant/60 font-mono text-xs">
+<div className="layer-depth-1 h-8 px-4 bg-surface-container-highest/90 flex items-center justify-between border-b border-outline-variant/60 font-mono text-xs">
 <div className="flex items-center gap-2">
 <span className="window-dot w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
 <span className="window-dot w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
@@ -543,7 +546,7 @@ export default function App() {
 <span className="text-cyber-cyan text-[11px] font-bold tracking-wider">REACT + REDUX</span>
 </div>
 {/* Video Player & Feed Preview Mockup */}
-<div className="relative h-60 w-full bg-surface-dim overflow-hidden p-3 flex flex-col gap-2 group-hover:bg-surface-dim/80 transition-colors">
+<div className="layer-depth-pop relative h-60 w-full bg-surface-dim overflow-hidden p-3 flex flex-col gap-2 group-hover:bg-surface-dim/80 transition-colors">
 {/* Simulated YouTube Top Nav */}
 <div className="h-6 w-full rounded bg-surface-container-high flex items-center justify-between px-2 text-[10px] font-mono text-on-surface-variant">
 <span className="text-rose-400 font-bold flex items-center gap-1">▶ YouTube</span>
@@ -585,8 +588,8 @@ export default function App() {
 </div>
 {/* Project Details (Authentic to Image 2) */}
 <div className="p-6 flex flex-col gap-4 flex-1 justify-between">
-<div>
-<h3 className="text-2xl font-display font-bold text-white group-hover:text-cyber-cyan transition-colors">
+<div className="layer-depth-2">
+<h3 className="text-2xl font-display font-bold text-white group-hover:text-cyber-cyan transition-colors cyber-glitch-tear cursor-pointer">
                 Youtube-Clone
               </h3>
 <p className="text-on-surface-variant text-sm mt-2 leading-relaxed">
@@ -594,14 +597,14 @@ export default function App() {
               </p>
 </div>
 {/* Tech Pills (Exact match from Image 2) */}
-<div className="flex flex-wrap items-center gap-2 pt-2">
+<div className="layer-depth-3 flex flex-wrap items-center gap-2 pt-2">
 <span className="px-2.5 py-1 rounded-full font-mono text-xs bg-cyber-blue/10 text-cyber-blue border border-cyber-blue/20 hover:border-cyber-blue transition-colors">React</span>
 <span className="px-2.5 py-1 rounded-full font-mono text-xs bg-purple-500/10 text-purple-300 border border-purple-500/20 hover:border-purple-500 transition-colors">Redux</span>
 <span className="px-2.5 py-1 rounded-full font-mono text-xs bg-cyber-cyan/10 text-cyber-cyan border border-cyber-cyan/20 hover:border-cyber-cyan transition-colors">Tailwind CSS</span>
 <span className="px-2.5 py-1 rounded-full font-mono text-xs bg-amber-400/10 text-amber-300 border border-amber-400/20 hover:border-amber-400 transition-colors">JavaScript</span>
 </div>
 {/* Action Link buttons */}
-<div className="flex items-center gap-4 pt-3 border-t border-outline-variant/60 font-mono text-xs">
+<div className="layer-depth-3 flex items-center gap-4 pt-3 border-t border-outline-variant/60 font-mono text-xs">
 <a className="text-cyber-cyan hover:underline flex items-center gap-1 group/link" href="https://yotube-clone-kappa.vercel.app/">
   <span>Live Showcase</span>
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">open_in_new</span>
@@ -616,9 +619,9 @@ export default function App() {
 </XRayCard>
 {/* PROJECT 2: Pokedex-App (Exact from Image 2 with micro-interactions) */}
 <XRayCard className="reveal-on-scroll" style={{ transitionDelay: "200ms" }}>
-<article className="project-card group rounded-2xl bg-surface-container/70 border border-outline-variant hover:border-cyber-blue/80 overflow-hidden backdrop-blur-md transition-all duration-500 flex flex-col justify-between h-full">
+<article className="project-card preserve-3d group rounded-2xl bg-surface-container/70 border border-outline-variant hover:border-cyber-blue/80 overflow-hidden backdrop-blur-md transition-all duration-500 flex flex-col justify-between h-full">
 {/* Terminal Mockup Window Header */}
-<div className="h-8 px-4 bg-surface-container-highest/90 flex items-center justify-between border-b border-outline-variant/60 font-mono text-xs">
+<div className="layer-depth-1 h-8 px-4 bg-surface-container-highest/90 flex items-center justify-between border-b border-outline-variant/60 font-mono text-xs">
 <div className="flex items-center gap-2">
 <span className="window-dot w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
 <span className="window-dot w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
@@ -628,45 +631,45 @@ export default function App() {
 <span className="text-cyber-blue text-[11px] font-bold tracking-wider">POKE-API ENGINE</span>
 </div>
 {/* Pokedex Retro Card Preview Mockup (Faithfully recreating Image 2 visual) */}
-<div className="relative h-60 w-full bg-surface-dim overflow-hidden p-3 flex flex-col justify-center group-hover:bg-surface-dim/80 transition-colors">
+<div className="layer-depth-pop relative h-60 w-full bg-surface-dim overflow-hidden p-3 flex flex-col justify-center group-hover:bg-surface-dim/80 transition-colors">
 <div className="grid grid-cols-4 gap-2">
 {/* Bulbasaur */}
 <div className="rounded-lg bg-emerald-950/40 border border-emerald-500/30 hover:border-emerald-400 p-2 flex flex-col items-center text-center transition-all hover:scale-105 duration-200">
-<div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-mono text-xs font-bold">#01</div>
+<div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-mono text-xs font-bold">#<SlotCounter value="01" /></div>
 <span className="font-mono text-[10px] text-emerald-300 mt-1 font-semibold">bulbasaur</span>
 </div>
 {/* Ivysaur */}
 <div className="rounded-lg bg-teal-950/40 border border-teal-500/30 hover:border-teal-400 p-2 flex flex-col items-center text-center transition-all hover:scale-105 duration-200">
-<div className="w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 font-mono text-xs font-bold">#02</div>
+<div className="w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 font-mono text-xs font-bold">#<SlotCounter value="02" /></div>
 <span className="font-mono text-[10px] text-teal-300 mt-1 font-semibold">ivysaur</span>
 </div>
 {/* Venusaur */}
 <div className="rounded-lg bg-cyan-950/40 border border-cyan-500/30 hover:border-cyan-400 p-2 flex flex-col items-center text-center transition-all hover:scale-105 duration-200">
-<div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-mono text-xs font-bold">#03</div>
+<div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-mono text-xs font-bold">#<SlotCounter value="03" /></div>
 <span className="font-mono text-[10px] text-cyan-300 mt-1 font-semibold">venusaur</span>
 </div>
 {/* Charmander */}
 <div className="rounded-lg bg-rose-950/40 border border-rose-500/30 hover:border-rose-400 p-2 flex flex-col items-center text-center transition-all hover:scale-105 duration-200">
-<div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 font-mono text-xs font-bold">#04</div>
+<div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 font-mono text-xs font-bold">#<SlotCounter value="04" /></div>
 <span className="font-mono text-[10px] text-rose-300 mt-1 font-semibold">charmander</span>
 </div>
 </div>
 {/* Second Row Mockup */}
 <div className="grid grid-cols-4 gap-2 mt-2">
 <div className="rounded-lg bg-orange-950/40 border border-orange-500/30 hover:border-orange-400 p-2 flex flex-col items-center text-center transition-all hover:scale-105 duration-200">
-<div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 font-mono text-xs font-bold">#05</div>
+<div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 font-mono text-xs font-bold">#<SlotCounter value="05" /></div>
 <span className="font-mono text-[10px] text-orange-300 mt-1 font-semibold">charmeleon</span>
 </div>
 <div className="rounded-lg bg-red-950/40 border border-red-500/30 hover:border-red-400 p-2 flex flex-col items-center text-center transition-all hover:scale-105 duration-200">
-<div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-mono text-xs font-bold">#06</div>
+<div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-mono text-xs font-bold">#<SlotCounter value="06" /></div>
 <span className="font-mono text-[10px] text-red-300 mt-1 font-semibold">charizard</span>
 </div>
 <div className="rounded-lg bg-sky-950/40 border border-sky-500/30 hover:border-sky-400 p-2 flex flex-col items-center text-center transition-all hover:scale-105 duration-200">
-<div className="w-8 h-8 rounded-full bg-sky-500/20 flex items-center justify-center text-sky-400 font-mono text-xs font-bold">#07</div>
+<div className="w-8 h-8 rounded-full bg-sky-500/20 flex items-center justify-center text-sky-400 font-mono text-xs font-bold">#<SlotCounter value="07" /></div>
 <span className="font-mono text-[10px] text-sky-300 mt-1 font-semibold">squirtle</span>
 </div>
 <div className="rounded-lg bg-blue-950/40 border border-blue-500/30 hover:border-blue-400 p-2 flex flex-col items-center text-center transition-all hover:scale-105 duration-200">
-<div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-mono text-xs font-bold">#08</div>
+<div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-mono text-xs font-bold">#<SlotCounter value="08" /></div>
 <span className="font-mono text-[10px] text-blue-300 mt-1 font-semibold">wartortle</span>
 </div>
 </div>
@@ -674,8 +677,8 @@ export default function App() {
 </div>
 {/* Project Details (Authentic to Image 2) */}
 <div className="p-6 flex flex-col gap-4 flex-1 justify-between">
-<div>
-<h3 className="text-2xl font-display font-bold text-white group-hover:text-cyber-blue transition-colors">
+<div className="layer-depth-2">
+<h3 className="text-2xl font-display font-bold text-white group-hover:text-cyber-blue transition-colors cyber-glitch-tear cursor-pointer">
                 Pokedex-App
               </h3>
 <p className="text-on-surface-variant text-sm mt-2 leading-relaxed">
@@ -683,13 +686,13 @@ export default function App() {
               </p>
 </div>
 {/* Tech Pills (Exact match from Image 2) */}
-<div className="flex flex-wrap items-center gap-2 pt-2">
+<div className="layer-depth-3 flex flex-wrap items-center gap-2 pt-2">
 <span className="px-2.5 py-1 rounded-full font-mono text-xs bg-cyber-blue/10 text-cyber-blue border border-cyber-blue/20 hover:border-cyber-blue transition-colors">React</span>
 <span className="px-2.5 py-1 rounded-full font-mono text-xs bg-cyber-cyan/10 text-cyber-cyan border border-cyber-cyan/20 hover:border-cyber-cyan transition-colors">CSS</span>
 <span className="px-2.5 py-1 rounded-full font-mono text-xs bg-amber-400/10 text-amber-300 border border-amber-400/20 hover:border-amber-400 transition-colors">JavaScript</span>
 </div>
 {/* Action Link buttons */}
-<div className="flex items-center gap-4 pt-3 border-t border-outline-variant/60 font-mono text-xs">
+<div className="layer-depth-3 flex items-center gap-4 pt-3 border-t border-outline-variant/60 font-mono text-xs">
 <a className="text-cyber-blue hover:underline flex items-center gap-1 group/link" href="https://pokemon-teal-eight-81.vercel.app/pokemon">
   <span>Launch Pokedex</span>
 <span className="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">open_in_new</span>
@@ -711,10 +714,10 @@ export default function App() {
 <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-cyber-cyan/10 blur-[100px] pointer-events-none"></div>
 <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-cyber-blue/10 blur-[100px] pointer-events-none"></div>
 <div className="relative z-10 flex flex-col items-center text-center gap-3 mb-8">
-<div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase">
-<span>{"// 04. TRANSMISSION_PORT"}</span>
+<div className="font-mono text-xs text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
+<span>{"// "}<SlotCounter value="04" />{". TRANSMISSION_PORT"}</span>
 </div>
-<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover" data-text="Contact me">Contact me</h2>
+<h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight glitch-hover cyber-glitch-tear cursor-pointer" data-text="Contact me">Contact me</h2>
 <div className="w-16 h-1 bg-gradient-to-r from-cyber-blue to-cyber-cyan rounded-full"></div>
 <p className="text-on-surface-variant text-sm sm:text-base max-w-lg mt-2">
             I'd love to hear about your project and how I can help. Share a few details below, and I'll get back to you shortly.
@@ -831,7 +834,7 @@ export default function App() {
 {/* Telemetry status */}
 <div className="flex items-center gap-2 font-mono text-xs text-on-surface-variant">
 <span className="w-2 h-2 rounded-full bg-cyber-cyan animate-pulse"></span>
-<span>LATENCY: 18ms // NODE_READY</span>
+<span>LATENCY: <SlotCounter value="18" />ms // NODE_READY</span>
 </div>
 </div>
 </footer>
